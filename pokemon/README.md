@@ -62,13 +62,13 @@ https://scikit-learn.org/stable/modules/svm.html
 ##### Convolutional Neural Network
 
 #### Current Status
-*Cleaning Sprite Names
+* Cleaning Sprite Names
 
 #### Completed Tasks
-*Downloaded All Sprites and Label Names
-*Unzip Sprites
-*Started Research on Data Cleaning
-*Installed Ubunto on Desktop
+* Downloaded All Sprites and Label Names
+* Unzip Sprites
+* Started Research on Data Cleaning
+* Installed Ubunto on Desktop
 
 
 
