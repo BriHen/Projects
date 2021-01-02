@@ -64,8 +64,11 @@ https://scikit-learn.org/stable/modules/svm.html
 
 #### Current Status
 Downloaded All Sprites and Label Names
+
 Unzip Sprites
+
 Started Research on Data Cleaning
+
 Installed Ubunto on Desktop
 
 
