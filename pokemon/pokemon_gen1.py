@@ -27,17 +27,27 @@ print("\n")
 ## Only went to 151 pokemon, no special evolutions, 
 ## No other changes,technically didnt include fairy pokemon and other new types,
 ## So Fans would be upset, Science would be happy
-
-for i in range (1,152): #looking at pokemon Numbers
-    ii=0     #will be the previous pokemon Number
-    if i != ii:
-        print(pokedex.loc[i,"Name"])
-        ii=i
-    i+=i
    
-    
-    
-    
-    
-    
-    
+previous_pokemon=0      #assigns initial previous_pokemon Number
+gen1pokedex=pd.DataFrame({"Number":[],"Name":[],"Type":[]})       # Creates a blank pandas dataframe
+i=0         #assigns blank variable, to be used for the index values
+while previous_pokemon < 151 : #Stops when the last pokemon taken was number 151, mew
+      pokemon_number=pokedex.loc[i,"Number"]    #Based on the index, selects the number
+      pokemon_name=pokedex.loc[i,"Name"]        #Based on the index, selects the name
+      pokemon_type=pokedex.loc[i,"Type 1"]      #Based on the index, selects the First type, which would be considered the main type
+      if pokemon_number != previous_pokemon:    #To remove pokemon mega evolutions, only select the first time the pokemon appears in dataset
+          current_pokemon=({"Number":[pokemon_number],"Name":[pokemon_name],"Type":[pokemon_type]}) #Creates a dict for the name number and type
+          current_pokemon=pd.DataFrame(data=current_pokemon)    #Creates a dataframe for current pokemon, can be used for error checking
+          gen1pokedex=gen1pokedex.append(current_pokemon)       #appends the current pokemon to the already building dataset
+          print(pokemon_number) #prints in console the pokemon number to see progression through dataset
+          previous_pokemon=pokemon_number #saves previous pokemon label as data was already saved to database
+          i+=1 #adds to the index value for next loop
+      else:
+          i+=1
+          
+          
+      
+      
+      
+      
+      
