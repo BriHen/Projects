@@ -27,7 +27,7 @@ for file in os.listdir(sprites):
         spritepath.append(os.path.join(sprites,file))
 
 ## create a pd database with number and file location to sort
-file_db=pd.DataFrame({"Number":spritenumber,"Path":spritepath,"ImageArray":None}) # create dataset
+file_db=pd.DataFrame({"Number":spritenumber,"Path":spritepath,}) # create dataset
 file_db=file_db.astype({'Number':'int32'})  #column number was imported as an object, changes to int 32
 file_db=file_db.sort_values(by='Number')    #sort by number
 
@@ -60,7 +60,11 @@ for file in file_db['Path']:
     g = np.asarray(g).reshape(-1)
     r = np.asarray(r).reshape(-1)
     rgb_array=np.concatenate((r,g,b))   # combines arrays together, making one large array with three colors
+#    file_db.loc[file_db.Path == file, ['ImageArray']] = rgb_array   #Looks through file_db and finds row based on the file path and changes the Image array value
+    rgb_temp.append(rgb_array)  # Creates an array with all arrays of numbers to be combined later with database
     
+    
+file_db.insert(2,'ImageArray',rgb_temp) # add's image array to database
 
 cv2.imshow('image',im)
 cv2.waitKey(0)
