@@ -70,7 +70,6 @@ https://scikit-learn.org/stable/modules/svm.html
 * Unzip Sprites
 * Started Research on Data Cleaning
 * Installed Ubunto on Desktop
-* Created a Function to pull pokemon from gen1 to create pokedex
 
 ### Gen1 SVM Analysis
 * Take a list of all files in the pokemon red and blue sprite folder
@@ -78,6 +77,8 @@ https://scikit-learn.org/stable/modules/svm.html
 * Convert images to array for colors, consisting of 3 channels r, g, and b with values 0-255 for each pixel
 * Concatenate color channels and create a long array to be imported to SVM
 * Merge data sets to create a single data frame with pokemon number, name, type, and image array
+* Seperate train and test sets at random
+* use SVM to predict test set, and compare different kernals (linear, poly, rpf)
 
 
 
