@@ -10,14 +10,7 @@ def Gen1Pokedex():
     ## So Fans would be upset, Science would be happy
     
     data='pokedex.csv' # Select csv with pokemon info, set up to be in same folder as current file
-    #pokedex=pd.read_csv(data,index_col=0) # Import pokemon info and save as pokedex
-    pokedex=pd.read_csv(data,index_col=None) # No index in File, helps removing special evols, Import pokemon info and save as pokedex
-    
-    #pokedex.rename(columns={"#":"Number"},inplace=True) # First time to change column name of "#"
-    #pokedex.rename(str.lower, axis='columns', inplace=True) # Changes column titles to lowercase, unsure if necissary
-    
-    #pokedex.to_csv('pokedex.csv', index=True) # Saves file, 
-       
+    pokedex=pd.read_csv(data,index_col=None) # No index in File, helps removing special evols, Import pokemon info and save as pokedex   
     previous_pokemon=0      #assigns initial previous_pokemon Number
     gen1pokedex=pd.DataFrame({"Number":[],"Name":[],"Type":[]})       # Creates a blank pandas dataframe
     i=0         #assigns blank variable, to be used for the index values
