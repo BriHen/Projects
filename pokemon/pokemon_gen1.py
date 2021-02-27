@@ -1,7 +1,6 @@
 import pandas as pd
 import os
 from sklearn.model_selection import train_test_split
-import time
 from tqdm import tqdm
 
 # import functions
@@ -53,7 +52,6 @@ Image_train, Image_test, Type_train, Type_test = train_test_split(
 values = []
 i = 0
 e = 100
-
 pbar = tqdm(total=e)
 
 for state in range(0, e, 1):
