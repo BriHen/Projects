@@ -17,6 +17,10 @@ def SVM_kernal_Optim(train1, test1, train2, test2, C=1):
             else:
                 answer = 'False'
         successr = 100*success/len(test1)
-        print('With a {} kernal, a success rate of {:#.4g}% was found.'.format(kernal, successr))
+        #print('With a {} kernal, a success rate of {:#.4g}% was found.'.format(kernal, successr))
         values.append(successr)
     return values
+
+# Create a function to determine most acruate Kernal based on multiple random sets
+
+    

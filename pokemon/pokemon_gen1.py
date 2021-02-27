@@ -9,7 +9,8 @@ from SVM_Optimizer import SVM_kernal_Optim
 
 
 # sprites is the location of sprite images for Gen1 pokemon
-sprites= "C:\\Users\\brima\\Documents\\CodeProjectData\\PokemonSprites\\pokemon\\main-sprites\\red-blue"
+sprites = "C:\\Users\\brima\\Documents\\CodeProjectData\\PokemonSprites\\"\
+    "pokemon\\main-sprites\\red-blue"
 
 
 # create pokedex for gen1 pokemon
@@ -47,5 +48,21 @@ Image_train, Image_test, Type_train, Type_test = train_test_split(
     Final_array['ImageArray'], Final_array['Type'], test_size=0.8, random_state=42)
 
 # For SVM testing
-values=SVM_kernal_Optim(Image_train, Image_test, Type_train, Type_test,C=1.62)
-print(values)
+# Look for optimal kernal for multiple random states
+values=[]
+i=0
+e=100
+for state in range(0, e, 1):
+    Image_train, Image_test, Type_train, Type_test = train_test_split(Final_array['ImageArray'], Final_array['Type'], test_size=0.8, random_state=state)
+    value=SVM_kernal_Optim(Image_train, Image_test, Type_train, Type_test, C=1)
+    values.append(value)
+    i+= 1
+    print(i)
+print('Complete')
+
+linear_perc = sum([i[0] for i in values])/e
+rbf_perc = sum([i[1] for i in values])/e
+poly_perc = sum([i[2] for i in values])/e
+
+print('Running {} random data sets, a success rate of {:#.4g}% for linear,'\
+      '{:#.4g}% for rbf, and {:#.4g}% for poly was found.'.format(e, linear_perc, rbf_perc, poly_perc))
