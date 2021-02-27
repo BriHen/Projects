@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 from sklearn.model_selection import train_test_split
+import time
+from tqdm import tqdm
 
 # import functions
 from pokedex_generator import Gen1Pokedex
@@ -42,22 +44,24 @@ file_db.insert(2, 'ImageArray', rgb_Array)  # add's image array to database
 # Need to combine dataframes to have a list of pokemon numbers, name, type, and image array
 Final_array = pd.merge(file_db, gen1, on='Number')
 
-# For SVM create test array's of ImageArray and Type
-# Create a set of random pokemon to be the training set
+# Create a set of random pokemon to be the training set and test set
 Image_train, Image_test, Type_train, Type_test = train_test_split(
     Final_array['ImageArray'], Final_array['Type'], test_size=0.8, random_state=42)
 
 # For SVM testing
-# Look for optimal kernal for multiple random states
-values=[]
-i=0
-e=100
+# Look for optimal kernal for multiple random statesd
+values = []
+i = 0
+e = 100
+
+pbar = tqdm(total=e)
+
 for state in range(0, e, 1):
     Image_train, Image_test, Type_train, Type_test = train_test_split(Final_array['ImageArray'], Final_array['Type'], test_size=0.8, random_state=state)
-    value=SVM_kernal_Optim(Image_train, Image_test, Type_train, Type_test, C=1)
+    value = SVM_kernal_Optim(Image_train, Image_test, Type_train, Type_test, C=1)
     values.append(value)
-    i+= 1
-    print(i)
+    i += 1
+    pbar.update(1)
 print('Complete')
 
 linear_perc = sum([i[0] for i in values])/e
